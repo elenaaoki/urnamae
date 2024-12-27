@@ -211,7 +211,7 @@ const defaultData = {
       "Keiki",
       "Keiko",
       "Kiara",
-      "KIE",
+      "Kie",
       "Kiho",
       "Kiko",
       "Kiku",
