@@ -3,7 +3,7 @@ let customData = [];
 const defaultData = {
   male: [
     {
-      "Nama": [
+      "Name": [
         "Naruto Uzumaki",
         "Sasuke Uchiha",
         "Ichigo Kurosaki",
@@ -14,11 +14,11 @@ const defaultData = {
         "Luffy Monkey D.",
         "Eren Yeager"
       ],
-      "Negara": "Anime (Nama Laki)",
-      "Jenis Kelamin": "Laki-laki"
+      "Origin": "Anime (Male Names)",
+      "Gender": "Male"
     },
   {
-    "Nama": [
+    "Name": [
       "Adhitya",
       "Adi",
       "Aditya",
@@ -120,13 +120,13 @@ const defaultData = {
       "Yusuf",
       "Zolla"
     ],
-    "Negara": "Indonesia",
-    "Jenis Kelamin": "Laki-laki"
+    "Origin": "Indonesia",
+    "Gender": "Male"
   }
   ],
   female: [
   {
-    "Nama": [
+    "Name": [
       "Ageha",
       "Ayase",
       "Ai",
@@ -673,11 +673,11 @@ const defaultData = {
       "Yuuna",
       "Yuzuki"
     ],
-    "Negara": "Jepang",
-    "Jenis Kelamin": "Perempuan"
+    "Origin": "Jepang",
+    "Gender": "Female"
   },
   {
-    "Nama": [
+    "Name": [
       "Abby",
       "Abigail",
       "Ada",
@@ -1426,11 +1426,11 @@ const defaultData = {
       "Yvette",
       "Yvonne"
     ],
-    "Negara": "Inggris",
-    "Jenis Kelamin": "Perempuan"
+    "Origin": "Inggris",
+    "Gender": "Female"
   },
   {
-    "Nama": [
+    "Name": [
       "Adelina",
       "Adinda",
       "Agustina",
@@ -1568,11 +1568,11 @@ const defaultData = {
       "Wulandari",
       "Yeni"
     ],
-    "Negara": "Indonesia",
-    "Jenis Kelamin": "Perempuan"
+    "Origin": "Indonesia",
+    "Gender": "Female"
   },
   {
-    "Nama": [
+    "Name": [
       "Ai",
       "Arty",
       "Chun",
@@ -1698,8 +1698,8 @@ const defaultData = {
       "Zhao",
       "Ziming"
     ],
-    "Negara": "China",
-    "Jenis Kelamin": "Perempuan"
+    "Origin": "China",
+    "Gender": "Female"
   }
 ]
 };
@@ -1732,8 +1732,8 @@ function updateSelections(data) {
     countryCheckboxes.innerHTML = '';
 
     // Get unique genders and countries
-    const genders = [...new Set(data.map(item => item["Jenis Kelamin"]))];
-    const countries = [...new Set(data.map(item => item.Negara))];
+    const genders = [...new Set(data.map(item => item["Gender"]))];
+    const countries = [...new Set(data.map(item => item.Origin))];
 
     // Create gender checkboxes
     genders.forEach(gender => {
@@ -1875,16 +1875,16 @@ document.getElementById('generate').addEventListener('click', function() {
     if (isCustomMode) {
         filteredNames = customData
             .filter(item => 
-                selectedCountries.includes(item.Negara) && 
-                selectedGenders.includes(item["Jenis Kelamin"]))
-            .flatMap(item => item.Nama.flatMap(name => name.split(' ')));
+                selectedCountries.includes(item.Origin) && 
+                selectedGenders.includes(item["Gender"]))
+            .flatMap(item => item.Name.flatMap(name => name.split(' ')));
     } else {
         const allNames = [...defaultData.male, ...defaultData.female];
         filteredNames = allNames
             .filter(item => 
-                selectedCountries.includes(item.Negara) && 
-                selectedGenders.includes(item["Jenis Kelamin"]))
-            .flatMap(item => item.Nama.flatMap(name => name.split(' ')));
+                selectedCountries.includes(item.Origin) && 
+                selectedGenders.includes(item["Gender"]))
+            .flatMap(item => item.Name.flatMap(name => name.split(' ')));
     }
 
     if (filteredNames.length === 0) {
