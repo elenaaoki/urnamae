@@ -2,24 +2,8 @@
 let customData = [];
 const defaultData = {
   male: [
-    {
-      "Name": [
-        "Naruto Uzumaki",
-        "Sasuke Uchiha",
-        "Ichigo Kurosaki",
-        "Light Yagami",
-        "Lelouch Lamperouge",
-        "Edward Elric",
-        "Goku Son",
-        "Luffy Monkey D.",
-        "Eren Yeager"
-      ],
-      "Origin": "Anime (Male Names)",
-      "Gender": "Male"
-    },
   {
     "Name": [
-      "Adhitya",
       "Adi",
       "Aditya",
       "Adri",
@@ -99,7 +83,7 @@ const defaultData = {
       "Rizki",
       "Rizky",
       "Saloka",
-      "Sandiaga Uno",
+      "SandiagaUno",
       "Santoso",
       "Saputra",
       "Saputro",
@@ -122,12 +106,97 @@ const defaultData = {
     ],
     "Origin": "Indonesia",
     "Gender": "Male"
+  },
+  {
+    "Name": [
+      "Naoto",
+      "Yamada",
+      "Taguchi",
+      "Morita",
+      "Madoka",
+      "Okamoto",
+      "Iwao",
+      "Haruto",
+      "Sumiya",
+      "Sudo",
+      "Sakuma",
+      "Hanakawa",
+      "Youta Murakami",
+      "Ikeuchi",
+      "Subaru",
+      "Kaito",
+      "Isao Kusaga",
+      "Sanbe Tadanori",
+      "Shuuichi Kagaya"
+    ],
+    "Origin": "Gleipnir",
+    "Gender": "Male"
+  },
+  {
+    "Name": [
+      "Uryuu Ishida",
+      "Zaraki Kenpachi",
+      "Kisuke Urahara",
+      "Aizen Sousuke",
+      "Toushirou Hitsugaya",
+      "Byakuya Kuchiki",
+      "Grimmjow Jaegerjaquez",
+      "Shunsui Jirou Sakuranosuke Kyouraku",
+      "Renji Abarai",
+      "Shinji Hirako",
+      "Kon",
+      "Sado Yatsutora",
+      "Hisagi Shuuhei",
+      "Ukitake Juushirou",
+      "Madarame Ikkaku",
+      "Zangetsu",
+      "Yamamoto Genryuusai Shigekuni",
+      "Yhwach",
+      "Kurosaki Isshin",
+      "Gilga Nnoitra",
+      "Ayasegawa Yumichika",
+      "Izuru Kira",
+      "Sajin Komamura",
+      "Kensei Muguruma",
+      "Kaname Tousen",
+      "Tsukishima Shuukurou",
+      "Nimaiya Ouetsu",
+      "Ginjou Kuugo",
+      "Hyousube Ichibei",
+      "Ishida Ryuuken",
+      "Black Bazzard",
+      "Shiba Ganju",
+      "Opie Quilge",
+      "Akon",
+      "Yuki Ryuunosuke",
+      "Kutsuzawa Giriko"
+    ],
+    "Origin": "Bleach",
+    "Gender": "Male"
+  },
+  {
+    "Name": [
+      "Aki Hayakawa",
+      "Kishibe",
+      "Yoshida",
+      "Beam",
+      "Galgali",
+      "Hirokazu Arai",
+      "Yuutarou Kurose",
+      "Madoka",
+      "Taiyou Hayakawa",
+      "Fushi",
+      "Takashi Inoue",
+      "Furuno",
+      "Shuzou Mishima"
+    ],
+    "Origin": "Chainsaw Man",
+    "Gender": "Male"
   }
-  ],
+],
   female: [
   {
     "Name": [
-      "Ageha",
       "Ayase",
       "Ai",
       "Aoi",
@@ -678,7 +747,6 @@ const defaultData = {
   },
   {
     "Name": [
-      "Abby",
       "Abigail",
       "Ada",
       "Addison",
@@ -791,14 +859,14 @@ const defaultData = {
       "Carly",
       "Carmelita",
       "Carol",
-      "Carol Ann",
-      "Carol Anne",
+      "CarolAnn",
+      "CarolAnne",
       "Carole",
       "Carolina",
       "Caroline",
       "Carolyn",
-      "Carrie Ann",
-      "Carrie Anne",
+      "CarrieAnn",
+      "CarrieAnne",
       "Carroll",
       "Carry",
       "Carson",
@@ -1193,7 +1261,7 @@ const defaultData = {
       "Marta",
       "Martina",
       "Mary",
-      "Mary Belle",
+      "MaryBelle",
       "Mason",
       "Matilda",
       "Maude",
@@ -1431,7 +1499,6 @@ const defaultData = {
   },
   {
     "Name": [
-      "Adelina",
       "Adinda",
       "Agustina",
       "Amanda",
@@ -1573,7 +1640,6 @@ const defaultData = {
   },
   {
     "Name": [
-      "Ai",
       "Arty",
       "Chun",
       "Chunchen",
@@ -1699,6 +1765,77 @@ const defaultData = {
       "Ziming"
     ],
     "Origin": "China",
+    "Gender": "Female"
+  },
+  {
+    "Name": [
+      "Elena Aoki",
+      "Chihiro Yoshioka",
+      "Nana Mifune",
+      "Hikawa",
+      "Sayaka Koyanagi",
+      "Aiko",
+      "Honoka",
+      "Izumi",
+      "Miku Aihara"
+    ],
+    "Origin": "Gleipnir",
+    "Gender": "Female"
+  },
+  {
+    "Name": [
+      "Matsumoto Rangiku",
+      "Rukia Kuchiki",
+      "Orihime Inoue",
+      "Soi Fon",
+      "Retsu Unohana",
+      "Yachiru Kusajishi",
+      "Tier Harribel",
+      "Bambietta Basterbine",
+      "Hiyori Sarugaki",
+      "Momo Hinamori",
+      "Shiba Kuukaku",
+      "Nemu Kurotsuchi",
+      "Senjumaru Shutara",
+      "Karin Kurosaki",
+      "Mashiro Kuna",
+      "Nanao Ise",
+      "Isane Kotetsu",
+      "Yuzu Kurosaki",
+      "Masaki Kurosaki",
+      "Ikumi Unagiya",
+      "Chan Sung-Sun",
+      "Meninas McAllon",
+      "Loly Aivirrne",
+      "Kirio Hikifune",
+      "Franceska Mila Rose",
+      "Kiyone Kotetsu",
+      "Shino Madarame",
+      "Kanae Katagiri",
+      "Nonomi Nomino",
+      "Batsu'unsai Katori",
+      "hasuka Hashihara",
+      "Kanan Ogura",
+      "Shiho Torajima",
+      "Yoruichi Shihouin",
+      "Tu Oderschvank Nelliel",
+      "Yadoumaru Lisa",
+      "Saitou Furoufushi"
+    ],
+    "Origin": "Bleach",
+    "Gender": "Female"
+  },
+  {
+    "Name": [
+      "Reze",
+      "Higashiyama Kobeni",
+      "Asa Mitaka",
+      "Yoru",
+      "Himeno",
+      "Akane Sawatari",
+      "Fami"
+    ],
+    "Origin": "Chainsaw Man",
     "Gender": "Female"
   }
 ]
