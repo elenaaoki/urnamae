@@ -372,6 +372,37 @@ const defaultData = {
     ],
     "Origin": "One Piece",
     "Gender": "Male"
+  },
+  {
+    "Name": [
+      "Bill Watkins",
+      "Billy Squire",
+      "Bond Forger",
+      "Byron Blackbell",
+      "Carrol Campbell",
+      "Cavi Campbell",
+      "Damian Desmond",
+      "Demetrius Desmond",
+      "Dominic",
+      "Donovan Desmond",
+      "Edgar",
+      "Emile Elman",
+      "Ewen Egeburg",
+      "Franky Franklin",
+      "Gascoigne",
+      "George Glooman",
+      "Henry Henderson",
+      "Jeeves",
+      "Keith Kepler",
+      "Loid Forger",
+      "Matthew McMahon",
+      "Murdoch Swan",
+      "Sigmund Authen",
+      "Winston Wheeler",
+      "Yuri Briar"
+    ],
+    "Origin": "SPYxFAMILY",
+    "Gender": "Male"
   }
 
 ],
@@ -2118,6 +2149,26 @@ const defaultData = {
       "Yamato"
     ],
     "Origin": "One Piece",
+    "Gender": "Female"
+  },
+  {
+    "Name": [
+      "Barbara Authen",
+      "Becky Blackbell",
+      "Camilla",
+      "Chloe",
+      "Fiona Frost",
+      "Kim Campbell",
+      "Martha Marriott",
+      "Melinda Desmond",
+      "Millie Myers",
+      "Olka Gretcher",
+      "Sharon",
+      "Sylvia Sherwood",
+      "Yor Briar",
+      "Yor Forger"
+    ],
+    "Origin": "SPYxFAMILY",
     "Gender": "Female"
   }
 ]
