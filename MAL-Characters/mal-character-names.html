@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Name Extractor</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .input-group {
+                flex-direction: row;
+            }
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .input-group input {
+                margin-bottom: 0;
+                margin-right: 10px;
+                border-radius: 4px 0 0 4px;
+            }
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3a5ce5;
+        }
+
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .result-container {
+            margin-top: 20px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .result-header h2 {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .result-content {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-line;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: #2ecc71;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Character Name Extractor</h1>
+        
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="Enter MyAnimeList character URL (e.g., https://myanimelist.net/manga/114660/Desuraba/characters)" />
+            <button id="processBtn" class="btn">Process</button>
+        </div>
+        
+        <div id="statusMessage"></div>
+        
+        <div class="result-container">
+            <div class="result-header">
+                <h2>Results</h2>
+                <button id="copyBtn" class="btn" disabled>Copy All</button>
+            </div>
+            <div id="resultContent" class="result-content">
+                No results yet. Enter a URL and click Process.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlInput = document.getElementById('urlInput');
+            const processBtn = document.getElementById('processBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const resultContent = document.getElementById('resultContent');
+            const statusMessage = document.getElementById('statusMessage');
+
+            // Process button click handler
+            processBtn.addEventListener('click', async function() {
+                const url = urlInput.value.trim();
+                
+                if (!url) {
+                    showError('Please enter a valid URL');
+                    return;
+                }
+                
+                if (!url.includes('myanimelist.net') || !url.includes('/characters')) {
+                    showError('Please enter a valid MyAnimeList characters URL');
+                    return;
+                }
+                
+                // Clear previous results and show loading
+                resultContent.textContent = 'Loading...';
+                statusMessage.textContent = '';
+                processBtn.disabled = true;
+                copyBtn.disabled = true;
+                
+                try {
+                    // Since direct CORS requests won't work, we'll use a proxy service
+                    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+                    
+                    const response = await fetch(proxyUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch the page');
+                    }
+                    
+                    const html = await response.text();
+                    
+                    // Create a temporary DOM element to parse the HTML
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // Extract all character names from h3 tags with class containing "character_name"
+                    const characterNameElements = doc.querySelectorAll('h3[class*="character_name"]');
+                    
+                    if (characterNameElements.length === 0) {
+                        resultContent.textContent = 'No character names found on this page.';
+                        showError('No character names found. Make sure you entered a valid MyAnimeList characters page.');
+                        processBtn.disabled = false;
+                        return;
+                    }
+                    
+                    // Extract the character names and preserve all special characters
+                    const characterNames = Array.from(characterNameElements).map(element => {
+                        // Extract the text content which is the original character name
+                        return element.textContent.trim();
+                    });
+                    
+                    // Display the results
+                    resultContent.textContent = characterNames.join('\n');
+                    showSuccess(`Found ${characterNames.length} character names`);
+                    copyBtn.disabled = false;
+                    
+                } catch (error) {
+                    resultContent.textContent = 'Error: ' + error.message;
+                    showError('Failed to process the URL. ' + error.message);
+                } finally {
+                    processBtn.disabled = false;
+                }
+            });
+            
+            // Copy button click handler
+            copyBtn.addEventListener('click', function() {
+                const text = resultContent.textContent;
+                
+                if (!text || text === 'No results yet. Enter a URL and click Process.') {
+                    return;
+                }
+                
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        showSuccess('All names copied to clipboard!');
+                        setTimeout(() => {
+                            statusMessage.textContent = '';
+                        }, 3000);
+                    })
+                    .catch(err => {
+                        showError('Failed to copy: ' + err);
+                    });
+            });
+            
+            // Helper functions
+            function showError(message) {
+                statusMessage.textContent = message;
+                statusMessage.className = 'error';
+            }
+            
+            function showSuccess(message) {
+                statusMessage.textContent = message;
+                statusMessage.className = 'success';
+            }
+        });
+    </script>
+</body>
+</html>
