@@ -1,0 +1,4 @@
+This is the MAL Character Name Extractor.
+Simply input a MAL anime character list URL,
+Example: https://myanimelist.net/anime/52991/Sousou_no_Frieren/characters,
+and you'll get the character names from the list.
